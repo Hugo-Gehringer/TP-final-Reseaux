@@ -27,7 +27,7 @@ public class Client {
 
 
     /**
-     * The entry point of application.
+     * main qui lance l'application client, en initialisant la connexion vers le serveur, génère la clé DES discute avec le serveur
      *
      * @param args the input arguments
      * @throws IOException               the io exception
@@ -46,7 +46,7 @@ public class Client {
         outs = new ObjectOutputStream(s.getOutputStream());
 
         //méthode qui génère la clé DES, reçoi la clé publique, chiffre la clé DES (voir plus bas)
-        encodeDes();
+        createKeyDES();
 
         while(true) {
 
@@ -88,7 +88,7 @@ public class Client {
     }
 
     /**
-     * Encode des.
+     * génère la clé DES, reçoit la clé publique, chiffre les DES et l'envoie.
      *
      * @throws IOException               the io exception
      * @throws NoSuchAlgorithmException  the no such algorithm exception
@@ -98,7 +98,7 @@ public class Client {
      * @throws BadPaddingException       the bad padding exception
      * @throws IllegalBlockSizeException the illegal block size exception
      */
-    public static void encodeDes() throws IOException, NoSuchAlgorithmException, ClassNotFoundException, NoSuchPaddingException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
+    public static void createKeyDES() throws IOException, NoSuchAlgorithmException, ClassNotFoundException, NoSuchPaddingException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
 
         // client génère la clé DES
         KeyGenerator keyGen = KeyGenerator.getInstance("DES");

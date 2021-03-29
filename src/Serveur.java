@@ -19,7 +19,7 @@ public class Serveur {
     private static Key cleDES;
 
     /**
-     * main qui lance l'application, en lançant le socket et en attendant des connexion clients
+     * main qui lance l'application,  initialise le socket et en attendant des connexion clients, crée les clés RSA et discute avec le client
      *
      * @param args the input arguments
      * @throws IOException               the io exception
@@ -43,7 +43,7 @@ public class Serveur {
 
         //méthode qui génère le couple de clé, récupère la clé DES chiffrée et la déchiffre
         //voir plus bas pour détail
-        generateSendRSA();
+        createKeyRSA();
 
         while (true) {
 
@@ -88,7 +88,7 @@ public class Serveur {
 
 
     /**
-     * Génère et envoi la clé rsa, récupère la  clé DES, décode la clé DES.
+     * Génère les clé RSA, envoi la clé publique, récupère la  clé DES, décode la clé DES.
      *
      * @throws IOException               the io exception
      * @throws ClassNotFoundException    the class not found exception
@@ -98,7 +98,7 @@ public class Serveur {
      * @throws IllegalBlockSizeException the illegal block size exception
      * @throws NoSuchAlgorithmException  the no such algorithm exception
      */
-    public static void generateSendRSA() throws IOException, ClassNotFoundException, NoSuchPaddingException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException {
+    public static void createKeyRSA() throws IOException, ClassNotFoundException, NoSuchPaddingException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException {
         // le serveur génère la paire de clé publique/privée
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
         keyPairGenerator.initialize(1024);
