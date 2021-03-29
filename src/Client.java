@@ -28,6 +28,7 @@ public class Client {
 
     /**
      * main qui lance l'application client, en initialisant la connexion vers le serveur, génère la clé DES discute avec le serveur
+     * Si l'utilisateur saisi "stop" on arrête la discussion
      *
      * @param args the input arguments
      * @throws IOException               the io exception
@@ -83,7 +84,7 @@ public class Client {
         ins.close();
         outs.close();
         s.close();
-        System.out.println("Fin de la conversation");
+        System.out.println("\nFin de la conversation");
 
     }
 

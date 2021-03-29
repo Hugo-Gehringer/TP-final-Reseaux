@@ -20,6 +20,7 @@ public class Serveur {
 
     /**
      * main qui lance l'application,  initialise le socket et en attendant des connexion clients, crée les clés RSA et discute avec le client
+     * Si l'utilisateur saisi "stop" on arrête la discussion
      *
      * @param args the input arguments
      * @throws IOException               the io exception
@@ -55,12 +56,11 @@ public class Serveur {
             // dechiffre le message recu
             byte[] messageDecode = EncodeDecode.decodedInDes(messageEncoded,cleDES);
             String md  = new String(messageDecode, StandardCharsets.UTF_8);
+            System.out.println( "message Recu : " +md);
 
             if (md.equals("stop")) {
                break;
             }
-
-            System.out.println( "message Recu : " +md);
 
             System.out.println("\nVeuillez saisir votre message");
             String str = sc.nextLine();
@@ -83,7 +83,7 @@ public class Serveur {
         ins.close();
         outs.close();
         soc.close();
-        System.out.println("Fin de la conversation");
+        System.out.println("\nFin de la conversation");
     }
 
 
